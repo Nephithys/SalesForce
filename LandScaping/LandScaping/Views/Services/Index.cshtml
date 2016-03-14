@@ -1,0 +1,89 @@
+﻿@model IEnumerable<LandScaping.Models.Services>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Service)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Acre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalCost)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Service)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Acre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalCost)
+        </td>
+
+
+        @*<td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>*@
+    </tr>
+
+
+}
+
+</table>
+<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
+    <input type="hidden" name="cmd" value="_xclick">
+    <input type="hidden" name="business" value="S8FMFT258Q2XG">
+    <input type="hidden" name="lc" value="US">
+    <input type="hidden" name="item_name" value="Mowing">
+    <input type="hidden" name="amount" value="1"> @*@Html.DisplayFor(item => item.TotalCost)*@
+    <input type="hidden" name="currency_code" value="USD">
+    <input type="hidden" name="button_subtype" value="services">
+    <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynow_LG.gif:NonHosted">
+    <input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_buynow_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+    <img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+    <input type="hidden" name="return" value="http://localhost:54155/Survey/ThankYou">
+    <input type="hidden" name="cbt" value="Return To H&H" src="http://localhost:9902/Services">
+</form>
+
+@using (Html.BeginForm("AddToProductList", "Services", FormMethod.Post))
+{
+      <input type="button" value="Mowing" onclick="location.href='@Url.Action("Create", "User")'" />
+}
+
+@using (Html.BeginForm("AddToProductList", "Services", FormMethod.Post))
+{
+    <input type="button" value="Mulch/Compost" onclick="location.href='@Url.Action("Create", "User")'" />
+}
+
+@using (Html.BeginForm("AddToProductList", "Services", FormMethod.Post))
+{
+    <input type="button" value="Tree Removal" onclick="location.href='@Url.Action("Create", "User")'" />
+}
+
+@using (Html.BeginForm("AddToProductList", "Services", FormMethod.Post))
+{
+    <input type="button" value="Bush/Tree Triming" onclick="location.href='@Url.Action("Create", "User")'" />
+}
+
+
