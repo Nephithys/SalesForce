@@ -25,13 +25,14 @@
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Client Profile", "Index", "Clients")</li>
-                    <li>@Html.ActionLink("View Jobs", "Index", "Jobs")</li>
+                    <li>@Html.ActionLink("Your Jobs", "Index", "Jobs")</li>
                     
                     @if (User.IsInRole("Admin"))
                     {
                         <li>@Html.ActionLink("View Client", "AdminIndex", "Clients")</li>
                         <li>@Html.ActionLink("View Jobs", "AdminIndex", "Jobs")</li>
                         <li>@Html.ActionLink("Role", "Index", "Role")</li>
+                        <li>@Html.ActionLink("Calendar", "Calendar", "Clients")</li>
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")
